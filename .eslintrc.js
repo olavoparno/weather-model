@@ -51,5 +51,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'react/jsx-boolean-value': 'warn',
     'react/prop-types': 'warn',
+    'import/order': 'warn',
   },
 };
