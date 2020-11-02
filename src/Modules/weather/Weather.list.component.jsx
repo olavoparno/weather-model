@@ -28,65 +28,67 @@ function TableComponent({columns, rows}) {
   );
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} size={matches ? 'small' : 'medium'}>
-        <TableHead className={classes.tableHead}>
-          <TableRow>
-            {columns
-              .filter((filterItem) => {
-                if (matches) {
-                  return filterItem.mobile === true;
-                }
+    <Fade in={rows.length > 0} timeout={500}>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} size={matches ? 'small' : 'medium'}>
+          <TableHead className={classes.tableHead}>
+            <TableRow>
+              {columns
+                .filter((filterItem) => {
+                  if (matches) {
+                    return filterItem.mobile === true;
+                  }
 
-                return filterItem;
-              })
-              .map((columnItem) => {
-                return (
-                  <TableCell key={columnItem.id} variant="head" align={columnItem.align}>
-                    {columnItem.label}
-                  </TableCell>
-                );
-              })}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows?.map((rowItem) => {
-            const {id, name, weather, sys} = rowItem;
-            const [weatherLike] = weather;
+                  return filterItem;
+                })
+                .map((columnItem) => {
+                  return (
+                    <TableCell key={columnItem.id} variant="head" align={columnItem.align}>
+                      {columnItem.label}
+                    </TableCell>
+                  );
+                })}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows?.map((rowItem) => {
+              const {id, name, weather, sys} = rowItem;
+              const [weatherLike] = weather;
 
-            return (
-              <Fade in={id !== null} key={id}>
-                <TableRow
-                  className={classes.rowItem}
-                  onClick={() => handleOpenDescription(rowItem)}>
-                  <TableCell component="th" scope="row">
-                    {name ?? 'City'}
-                  </TableCell>
-                  {!matches ? (
-                    <>
-                      <TableCell component="th" scope="row">
-                        {weatherLike.main ?? 'Weather'}
-                      </TableCell>
-                      <TableCell align="right">{sys.country ?? 'Country'}</TableCell>
-                    </>
-                  ) : null}
-                </TableRow>
-              </Fade>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+              return (
+                <Fade in={id !== null} key={id}>
+                  <TableRow
+                    className={classes.rowItem}
+                    onClick={() => handleOpenDescription(rowItem)}>
+                    <TableCell component="th" scope="row">
+                      {name ?? 'City'}
+                    </TableCell>
+                    {!matches ? (
+                      <>
+                        <TableCell component="th" scope="row">
+                          {weatherLike.main ?? 'Weather'}
+                        </TableCell>
+                        <TableCell align="right">{sys.country ?? 'Country'}</TableCell>
+                      </>
+                    ) : null}
+                  </TableRow>
+                </Fade>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Fade>
   );
 }
 
 export function CitiesList() {
   const {citiesColumns, closestCities} = useWeather();
 
-  return useMemo(() => <TableComponent columns={citiesColumns} rows={closestCities} />, [
-    citiesColumns,
-    closestCities,
-  ]);
+  return useMemo(
+    () => <TableComponent data-testid="city-list" columns={citiesColumns} rows={closestCities} />,
+    [citiesColumns, closestCities]
+  );
 }
 
 TableComponent.propTypes = {

@@ -5,11 +5,13 @@
   "scripts": {
     "start": "env-cmd -f .env.develop react-scripts start",
     "build": "env-cmd -f .env.develop react-scripts build",
-    "test": "react-scripts test || true",
+    "test": "react-scripts test",
+    "test:cover": "react-scripts test --coverage",
     "make-badges": "istanbul-badges-readme",
     "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint src/**/*.{js,jsx} --fix",
-    "prettier:fix": "prettier .eslintrc.js --write src/**/*.{js,jsx}"
+    "prettier:fix": "prettier .eslintrc.js --write src/**/*.{js,jsx}",
+    "release": "standard-version"
   },
   "eslintConfig": {
     "extends": [
@@ -19,12 +21,13 @@
   },
   "jest": {
     "coverageReporters": [
+      "lcov",
       "json-summary"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test && npm run make-badges && git add 'README.md'",
+      "pre-commit": "npm run lint && npm run test:cover && npm run make-badges && git add 'README.md'",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -60,6 +63,7 @@
     "@commitlint/config-angular": "^11.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/user-event": "^12.1.10",
     "env-cmd": "^10.1.0",
     "eslint": "^7.12.1",
@@ -74,6 +78,8 @@
     "eslint-plugin-sonarjs": "^0.5.0",
     "husky": "^4.3.0",
     "istanbul-badges-readme": "^1.0.5",
-    "prettier": "2.1.2"
+    "prettier": "2.1.2",
+    "react-test-renderer": "^17.0.1",
+    "standard-version": "^9.0.0"
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import shallow from 'zustand/shallow';
-import {Fade, Paper} from '@material-ui/core';
+import {Paper} from '@material-ui/core';
 import {useStyles} from 'Modules/weather/Weather.styles';
 import {SearchDisplay} from 'Modules/weather/Weather.search.component';
 import {WeatherMap} from 'Modules/weather/Weather.map.component';
@@ -32,11 +32,11 @@ export function WeatherPage() {
           <CitiesListSkeleton />
         </Paper>
       )}
-      <Fade in={closestCities.length > 0}>
+      {closestCities.length > 0 && (
         <Paper elevation={3} className={classes.paper}>
           <CitiesList />
         </Paper>
-      </Fade>
+      )}
     </div>
   );
 }

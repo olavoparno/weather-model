@@ -15,7 +15,11 @@ export function SearchDisplay() {
     <Paper component="form" className={classes.searchRoot}>
       <InputBase disabled className={classes.input} placeholder={currentLocation?.toString()} />
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="button" className={classes.iconButton} onClick={getClosestCities}>
+      <IconButton
+        aria-label="search-button"
+        type="button"
+        className={classes.iconButton}
+        onClick={getClosestCities}>
         <SearchIcon />
       </IconButton>
     </Paper>
