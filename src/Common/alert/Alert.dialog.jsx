@@ -17,7 +17,7 @@ export function AlertDialog() {
 
   return useMemo(() => {
     return (
-      <Modal hideBackdrop open={alertOptions} onClose={handleClose} closeAfterTransition>
+      <Modal hideBackdrop open={alertOptions !== null} onClose={handleClose} closeAfterTransition>
         <Fade in={alertOptions !== null}>
           <AlertComponent closeModal={handleClose} {...alertOptions} />
         </Fade>

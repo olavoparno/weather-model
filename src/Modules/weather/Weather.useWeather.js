@@ -52,10 +52,18 @@ export function useWeather() {
   );
 
   useEffect(() => {
+    const defaultModecLocation = {
+      latitude: 35.681155,
+      longitude: 139.7703283,
+    };
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setCurrentLocationCallback);
       }
+
+      setCurrentLocationCallback({
+        coords: defaultModecLocation,
+      });
     }
 
     if (!currentLocation) getLocation();
