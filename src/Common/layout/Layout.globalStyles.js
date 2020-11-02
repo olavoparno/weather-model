@@ -20,6 +20,15 @@ export function useGlobalTheme() {
             minHeight: 500,
           },
         },
+        overrides: {
+          MuiCssBaseline: {
+            '@global': {
+              html: {
+                scrollBehavior: 'smooth',
+              },
+            },
+          },
+        },
       }),
     [isDarkMode]
   );

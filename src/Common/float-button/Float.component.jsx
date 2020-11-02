@@ -8,13 +8,15 @@ export function FloatingButton() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
   const [buttonStyle, setButtonStyle] = useState({
-    display: 'block',
+    display: 'none',
   });
 
   useEffect(() => {
     function scrollFunction() {
       if (document.body.scrollTop > 135 || document.documentElement.scrollTop > 135) {
-        setButtonStyle({display: 'block'});
+        if (matches) {
+          setButtonStyle({display: 'block'});
+        }
       } else {
         setButtonStyle({display: 'none'});
       }
@@ -25,10 +27,6 @@ export function FloatingButton() {
     return () => {
       document.removeEventListener('scroll', scrollFunction);
     };
-  }, []);
-
-  useEffect(() => {
-    setButtonStyle({display: matches ? 'block' : 'none'});
   }, [matches]);
 
   const scrollTop = useCallback(() => {
