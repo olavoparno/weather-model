@@ -68,7 +68,9 @@ function TableComponent({columns, rows}) {
                         <TableCell component="th" scope="row">
                           {weatherLike.main ?? 'Weather'}
                         </TableCell>
-                        <TableCell align="right">{sys.country ?? 'Country'}</TableCell>
+                        <TableCell component="th" scope="row" align="right">
+                          {sys.country ?? 'Country'}
+                        </TableCell>
                       </>
                     ) : null}
                   </TableRow>
