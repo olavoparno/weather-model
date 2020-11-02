@@ -26,13 +26,7 @@ export function ThemeToggler() {
   }, [setDarkMode]);
 
   return (
-    <IconButton
-      className={classes.lightTamper}
-      aria-label="toggle dark/light mode"
-      aria-controls="menu-appbar"
-      aria-haspopup="false"
-      onClick={setDarkModeCallback}
-      color="inherit">
+    <IconButton className={classes.lightTamper} onClick={setDarkModeCallback}>
       <BulbIcon darkMode={isDarkMode} />
     </IconButton>
   );

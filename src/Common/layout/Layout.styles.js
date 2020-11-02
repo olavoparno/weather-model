@@ -10,10 +10,13 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(10, 1, 0),
   },
   lightTamper: {
-    position: 'absolute',
-    top: theme.spacing(2),
-    right: theme.spacing(2),
-    cursor: 'pointer',
+    '&.MuiIconButton-root': {
+      position: 'absolute',
+      top: theme.spacing(2),
+      right: theme.spacing(2),
+      cursor: 'pointer',
+      color: theme.palette.primary.main,
+    },
   },
   footer: {
     marginTop: 'auto',
