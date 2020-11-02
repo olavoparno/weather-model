@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Grid} from '@material-ui/core';
 import {useStyles} from 'Common/layout/Layout.styles';
 import {ThemeToggler} from 'Common/layout/theme-toggler/Layout.Toggler.component';
+import {FloatingButton} from 'Common/float-button/Float.component';
 
 export function Layout({children}) {
   const classes = useStyles();
@@ -15,6 +16,7 @@ export function Layout({children}) {
           {children}
         </Grid>
       </Grid>
+      <FloatingButton />
     </div>
   );
 }
