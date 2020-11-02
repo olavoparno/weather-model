@@ -1,13 +1,15 @@
 import React, {useCallback, useEffect} from 'react';
 import {MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents} from 'react-leaflet';
-import {useWeather} from './Weather.useWeather';
+import {Button} from '@material-ui/core';
+import {useWeather} from 'Modules/weather/Weather.useWeather';
+import {SearchOutlined} from 'Common/icons/Icons.Exporter';
 
 const mapStyles = {
   height: 500,
 };
 
 const MapMarker = () => {
-  const {currentLocation, setCurrentLocation} = useWeather();
+  const {currentLocation, setCurrentLocation, getClosestCities} = useWeather();
 
   const handleNewPosition = useCallback((newPosition) => setCurrentLocation(newPosition), [
     setCurrentLocation,
@@ -27,7 +29,15 @@ const MapMarker = () => {
 
   return (
     <Marker position={currentLocation}>
-      <Popup>You are here</Popup>
+      <Popup>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<SearchOutlined />}
+          onClick={getClosestCities}>
+          Search Closest Cities
+        </Button>
+      </Popup>
     </Marker>
   );
 };

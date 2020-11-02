@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import {useStyles} from 'Modules/weather/Weather.styles';
-import {useWeather} from './Weather.useWeather';
+import {useWeather} from 'Modules/weather/Weather.useWeather';
 
 export function SearchDisplay() {
   const classes = useStyles();
