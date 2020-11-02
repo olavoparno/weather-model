@@ -2,9 +2,12 @@ import {makeStyles} from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   paper: {
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(2, 0, 1),
     padding: theme.spacing(2),
     textAlign: 'center',
+    [theme.breakpoints.up('md')]: {
+      margin: theme.spacing(2, 0, 2),
+    },
   },
   searchRoot: {
     padding: theme.spacing(0.2, 1),
@@ -31,10 +34,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   modalPaper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: `1px solid ${theme.palette.primary.main}`,
+    borderRadius: '3px',
     boxShadow: theme.shadows[5],
     margin: theme.spacing(2),
     padding: theme.spacing(2, 4, 3),
+    '&:focus': {
+      outline: 'none',
+    },
   },
   table: {
     minWidth: 272,

@@ -8,6 +8,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     padding: theme.spacing(10, 1, 0),
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(10, 1),
+    },
   },
   lightTamper: {
     '&.MuiIconButton-root': {

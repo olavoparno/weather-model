@@ -26,13 +26,13 @@ export function WeatherDetails() {
         <Fade in={isModalOpen}>
           <div className={classes.modalPaper}>
             <Typography paragraph component="h1" variant="h4">
-              Weather details for: {name ?? 'Unknown City'}
+              Weather details for {name ?? 'Unknown City'}
             </Typography>
             <Typography component="h2" variant="subtitle2">
-              - Current Maximum Temperature: {Math.round(max)} °C
+              - Max Temperature: {Math.round(max)} °C
             </Typography>
             <Typography component="h2" variant="subtitle2">
-              - Current Minimum Temperature: {Math.round(min)} °C
+              - Min Temperature: {Math.round(min)} °C
             </Typography>
           </div>
         </Fade>

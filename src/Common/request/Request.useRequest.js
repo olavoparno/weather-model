@@ -1,12 +1,27 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
+import shallow from 'zustand/shallow';
 import axios from 'axios';
 import {apiKey} from 'Common/platform/Platform.envManager';
 import {useAdapter} from 'Common/request/Request.useAdapter';
 import {useErrorHandler} from 'Common/request/Request.useErrorHandler';
+import {usePlatformStore} from 'Common/platform/Platform.usePlatformStore';
 
 export function useRequest(baseURL) {
   const {handleGeneralErrors} = useErrorHandler();
   const {retryAdapterEnhancer, cacheAdapterEnhancer, Cache} = useAdapter();
+  const {setIsLoading} = usePlatformStore(
+    (state) => ({
+      setIsLoading: state.setIsLoading,
+    }),
+    shallow
+  );
+
+  const handleLoading = useCallback(
+    (isLoading) => {
+      setIsLoading(isLoading);
+    },
+    [setIsLoading]
+  );
 
   const [axiosInstance, setAxiosInstance] = useState({});
   useEffect(() => {
@@ -34,11 +49,20 @@ export function useRequest(baseURL) {
       return isValidStatus(status);
     };
 
+    instance.interceptors.request.use((config) => {
+      handleLoading(true);
+
+      return config;
+    });
+
     instance.interceptors.response.use(
       (response) => {
+        handleLoading(false);
+
         return response;
       },
       (error) => {
+        handleLoading(false);
         handleGeneralErrors(error);
 
         return Promise.reject(error);
@@ -50,7 +74,14 @@ export function useRequest(baseURL) {
     return () => {
       setAxiosInstance({});
     };
-  }, [baseURL, retryAdapterEnhancer, Cache, cacheAdapterEnhancer, handleGeneralErrors]);
+  }, [
+    baseURL,
+    retryAdapterEnhancer,
+    Cache,
+    cacheAdapterEnhancer,
+    handleGeneralErrors,
+    handleLoading,
+  ]);
 
   return axiosInstance.instance;
 }
