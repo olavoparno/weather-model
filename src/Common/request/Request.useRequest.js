@@ -12,6 +12,7 @@ export function useRequest(baseURL) {
       baseURL,
       params: {
         appid: apiKey,
+        units: 'metric',
       },
       timeout: 0,
     });
