@@ -17,6 +17,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     padding: 10,
+    color: theme.palette.primary.main,
   },
   divider: {
     height: 28,

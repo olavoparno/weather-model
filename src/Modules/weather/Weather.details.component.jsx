@@ -13,10 +13,6 @@ export function WeatherDetails() {
     const {name, main} = currentCity;
     const {temp_max: max, temp_min: min} = main;
 
-    const convertToCelsius = (tempInKelvin) => {
-      return Math.round(tempInKelvin - 273.15);
-    };
-
     return (
       <Modal
         className={classes.modal}
@@ -33,10 +29,10 @@ export function WeatherDetails() {
               Weather details for: {name ?? 'Unknown City'}
             </Typography>
             <Typography component="h2" variant="subtitle2">
-              - Current Maximum Temperature: {convertToCelsius(max)} °C
+              - Current Maximum Temperature: {max} °C
             </Typography>
             <Typography component="h2" variant="subtitle2">
-              - Current Minimum Temperature: {convertToCelsius(min)} °C
+              - Current Minimum Temperature: {min} °C
             </Typography>
           </div>
         </Fade>
