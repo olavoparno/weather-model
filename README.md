@@ -8,6 +8,10 @@
 
 ---
 
+[**Preview me!**](https://weather-model.vercel.app/)
+
+---
+
 ## Table of Contents
 
 - [Requirements](#requirements)
