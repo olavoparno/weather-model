@@ -13,6 +13,7 @@
 - [Requirements](#requirements)
 - [Quick Overview](#quick-overview)
 - [Libraries](#libraries)
+- [Todo](#Todo)
 - [License](#license)
 
 ---
@@ -67,6 +68,12 @@ Main used **devDependency** libraries:
 - **Commitlint** (enforce git commit convention, e.g. [**Angular Commit Convention**](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format)).
 - **Istanbul-Badges-Readme** (shows testing coverage percentages in a visual way with ease without depending on tools like [**Coveralls**](https://coveralls.io/)).
 - **Standard-Version** (keeps record of the git history and releases).
+
+---
+
+## Todo
+
+- Increase unit testing coverage.
 
 ---
 
