@@ -2,8 +2,10 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {apiKey} from 'Common/platform/Platform.envManager';
 import {useAdapter} from 'Common/request/Request.useAdapter';
+import {useErrorHandler} from 'Common/request/Request.useErrorHandler';
 
 export function useRequest(baseURL) {
+  const {handleGeneralErrors} = useErrorHandler();
   const {retryAdapterEnhancer, cacheAdapterEnhancer, Cache} = useAdapter();
 
   const [axiosInstance, setAxiosInstance] = useState({});
@@ -24,12 +26,31 @@ export function useRequest(baseURL) {
       defaultCache: customCache,
     });
 
+    const isValidStatus = (status) => {
+      return status >= 200 && status < 300;
+    };
+
+    instance.defaults.validateStatus = (status) => {
+      return isValidStatus(status);
+    };
+
+    instance.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      (error) => {
+        handleGeneralErrors(error);
+
+        return Promise.reject(error);
+      }
+    );
+
     setAxiosInstance({instance});
 
     return () => {
       setAxiosInstance({});
     };
-  }, [baseURL, retryAdapterEnhancer, Cache, cacheAdapterEnhancer]);
+  }, [baseURL, retryAdapterEnhancer, Cache, cacheAdapterEnhancer, handleGeneralErrors]);
 
   return axiosInstance.instance;
 }

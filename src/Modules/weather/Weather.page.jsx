@@ -15,11 +15,11 @@ export function WeatherPage() {
     <div>
       {isModalOpen && <WeatherDetails />}
       <SearchDisplay />
-      <Paper className={classes.paper}>
+      <Paper elevation={3} className={classes.paper}>
         <WeatherMap />
       </Paper>
       <Fade in={closestCities.length > 0}>
-        <Paper className={classes.paper}>
+        <Paper elevation={3} className={classes.paper}>
           <CitiesList />
         </Paper>
       </Fade>

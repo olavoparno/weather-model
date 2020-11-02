@@ -13,7 +13,7 @@ export function AppWithTheme() {
   const {globalMuiTheme} = useGlobalTheme();
 
   useEffect(() => {
-    logMsg.info('Hello, my name is Olavo! Reach me trough GitHub:\nhttps://github.com/olavoparno');
+    logMsg.info('Hello, my name is Olavo! Reach me through GitHub:\nhttps://github.com/olavoparno');
   }, [logMsg]);
 
   return (
