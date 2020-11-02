@@ -29,10 +29,10 @@ export function WeatherDetails() {
               Weather details for: {name ?? 'Unknown City'}
             </Typography>
             <Typography component="h2" variant="subtitle2">
-              - Current Maximum Temperature: {max} °C
+              - Current Maximum Temperature: {Math.round(max)} °C
             </Typography>
             <Typography component="h2" variant="subtitle2">
-              - Current Minimum Temperature: {min} °C
+              - Current Minimum Temperature: {Math.round(min)} °C
             </Typography>
           </div>
         </Fade>

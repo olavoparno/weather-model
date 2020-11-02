@@ -14,6 +14,7 @@ export const useStyles = makeStyles((theme) => ({
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
+    pointerEvents: 'none',
   },
   iconButton: {
     padding: 10,
@@ -45,5 +46,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   rowItem: {
     cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: theme.palette.primary.light,
+      '& th': {
+        color: theme.palette.common.white,
+      },
+    },
+    '&:active, &:focus': {
+      backgroundColor: theme.palette.primary.dark,
+    },
   },
 }));

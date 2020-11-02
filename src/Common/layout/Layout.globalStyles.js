@@ -16,9 +16,6 @@ export function useGlobalTheme() {
           type: isDarkMode ? 'dark' : 'light',
         },
         mixins: {
-          footer: {
-            minHeight: 36,
-          },
           map: {
             minHeight: 500,
           },

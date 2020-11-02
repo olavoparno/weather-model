@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Grid} from '@material-ui/core';
 import {useStyles} from 'Common/layout/Layout.styles';
-import {Footer} from 'Common/layout/footer/Layout.Footer.component';
 import {ThemeToggler} from 'Common/layout/theme-toggler/Layout.Toggler.component';
 
 export function Layout({children}) {
@@ -16,7 +15,6 @@ export function Layout({children}) {
           {children}
         </Grid>
       </Grid>
-      <Footer />
     </div>
   );
 }

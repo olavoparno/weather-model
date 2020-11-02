@@ -13,7 +13,7 @@ export function SearchDisplay() {
 
   return (
     <Paper component="form" className={classes.searchRoot}>
-      <InputBase className={classes.input} placeholder="Coordinates" value={currentLocation} />
+      <InputBase disabled className={classes.input} placeholder={currentLocation?.toString()} />
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton type="button" className={classes.iconButton} onClick={getClosestCities}>
         <SearchIcon />
