@@ -6,7 +6,7 @@
     "start": "env-cmd -f .env.develop react-scripts start",
     "build": "env-cmd -f .env.develop react-scripts build",
     "test": "react-scripts test",
-    "test:cover": "react-scripts test --coverage",
+    "test:cover": "set CI=true && react-scripts test --coverage",
     "make-badges": "istanbul-badges-readme",
     "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint src/**/*.{js,jsx} --fix",
